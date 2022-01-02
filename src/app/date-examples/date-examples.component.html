@@ -1,0 +1,93 @@
+<!-- Styling z. B. von Wochenenden mit dateClass -->
+<mat-form-field>
+  <mat-label>Coloured date</mat-label>
+  <input matInput [matDatepicker]="pickerClass">
+  <mat-datepicker-toggle matSuffix [for]="pickerClass"></mat-datepicker-toggle>
+  <mat-datepicker [dateClass]="dateClass" #pickerClass></mat-datepicker>
+</mat-form-field>
+
+<p></p>
+---
+<!-- Ausfiltern von Samstagen und Sonntagen
+     Wichtig: Verwenden von 'matDatePickFilter' in <mat-error>
+-->
+<mat-form-field>
+  <mat-datepicker-toggle matSuffix [for]="resultPicker1"></mat-datepicker-toggle>
+  <mat-label>Pick ohne Sa,So</mat-label>
+  <input matInput [matDatepicker]="resultPicker1"
+         #resultPickerModel2="ngModel"
+         [(ngModel)]="thedate"
+         [matDatepickerFilter]="dateFilter"
+  >
+  <mat-datepicker #resultPicker1> </mat-datepicker>
+
+  <mat-error *ngIf="resultPickerModel2.hasError('matDatepickerParse')">
+    "{{resultPickerModel2.getError('matDatepickerParse').text}}" is not a valid date!
+  </mat-error>
+
+  <mat-error *ngIf="resultPickerModel2.hasError('matDatepickerFilter')">
+    Date unavailable! It's a weekend. {{thedate | date }}
+  </mat-error>
+</mat-form-field>
+
+ ---
+
+<!-- mit min, max, MIT Validaton bei direkter, manueller Eingabe -->
+<mat-form-field>
+  <mat-label>Pick mit Min/Max/Val</mat-label>
+  <input matInput [matDatepicker]="refPickerMinMaxVal" [min]="minDate" [max]="maxDate"
+         [(ngModel)]="dateMinMax"   #resultPickerModel1="ngModel"
+  >
+  <mat-datepicker #refPickerMinMaxVal> </mat-datepicker>
+  <mat-datepicker-toggle matSuffix [for]="refPickerMinMaxVal"></mat-datepicker-toggle>
+
+  <mat-error *ngIf="resultPickerModel1.hasError('matDatepickerParse')">
+    "{{resultPickerModel1.getError('matDatepickerParse').text}}" is not a valid date!
+  </mat-error>
+
+  <mat-error *ngIf="resultPickerModel1.hasError('matDatepickerMin')">
+    Minimum date should be {{minDate | date }}
+  </mat-error>
+
+  <mat-error *ngIf="resultPickerModel1.hasError('matDatepickerMax')">
+    Maximum date should be {{maxDate | date }}
+  </mat-error>
+</mat-form-field>
+
+---
+
+<!-- mit min, max, aber ohne Validation der manuellen direkten Datumseingabe  -->
+<mat-form-field>
+  <mat-label>Pick mit Min/Max</mat-label>
+  <input matInput [matDatepicker]="refpicker" [min]="minDate"  [max]="maxDate" >
+  <mat-datepicker #refpicker></mat-datepicker>
+  <mat-datepicker-toggle matSuffix [for]="refpicker"> </mat-datepicker-toggle>
+</mat-form-field>
+
+<p></p>
+
+<!-- mit startAt-Option -->
+<mat-form-field>
+  <mat-label>Choose mit startAt</mat-label>
+  <input matInput [matDatepicker]="startatpicker">
+  <mat-datepicker-toggle  [for]="startatpicker"> </mat-datepicker-toggle>
+  <mat-datepicker #startatpicker startView="year" [startAt]="startDate"></mat-datepicker>
+</mat-form-field>
+
+-
+
+<!-- ab jetzt wird das  Ganze mit <mat-form-field> umgeben-->
+<mat-form-field>
+  <mat-label>Choose a Date</mat-label>
+  <input matInput [matDatepicker]="pickeryear">
+  <mat-datepicker-toggle  [for]="pickeryear"></mat-datepicker-toggle>
+  <mat-datepicker #pickeryear startView="year"></mat-datepicker>
+</mat-form-field>
+
+-
+
+<mat-form-field>
+  <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+  <mat-datepicker-toggle  [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker startView="year"></mat-datepicker>
+</mat-form-field>

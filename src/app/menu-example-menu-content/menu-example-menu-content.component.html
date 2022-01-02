@@ -1,0 +1,26 @@
+<button mat-button [matMenuTriggerFor]="manageAccounts"
+                   [matMenuTriggerData]="menuItems">
+        {{activeUser.Name}}
+</button>
+
+<mat-menu #manageAccounts="matMenu">
+
+  <ng-template [matMenuContent]="menuItems">
+
+    <ng-container *ngFor="let user of menuItems.Users">
+      <button mat-menu-item>  <span>{{user.Name}}</span>
+        <mat-icon *ngIf="user.IsActive"> how_to_reg</mat-icon>
+      </button>
+    </ng-container>
+
+    <ng-container *ngFor="let othermenu of menuItems.OtherMenus">
+      <button mat-menu-item>{{othermenu}}</button>
+    </ng-container>
+
+    <button mat-menu-item>Log off {{menuItems.ActiveUser.Name}}</button>
+
+  </ng-template>
+
+
+</mat-menu>
+

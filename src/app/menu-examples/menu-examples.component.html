@@ -1,0 +1,101 @@
+
+
+<mat-toolbar>
+  <button mat-icon-button  [matMenuTriggerFor]="clickmenu"> <mat-icon>more_vert</mat-icon> </button>
+  <!--<span>Selected Menu {{selectedMenu}}</span>-->
+
+  <mat-menu #clickmenu="matMenu">
+    <button mat-menu-item
+            *ngFor="let item of menuListItems"
+            (click)="clickMenuItem(item)"
+            [disabled]="item.isDisabled">
+      <mat-icon>{{ item.menuIcon }}</mat-icon>
+      <span> {{ item.menuLinkText }}</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
+
+
+<mat-card>
+
+  <button mat-button [matMenuTriggerFor]="menu">Simple Menu</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Menu Item 1</button>
+    <button mat-menu-item>Menu Item 2</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="beforeMenu">Before</button>
+  <mat-menu #beforeMenu="matMenu" xPosition="before">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="afterMenu">After</button>
+  <mat-menu #afterMenu="matMenu" xPosition="after">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="aboveMenu">Above</button>
+  <mat-menu #aboveMenu="matMenu" yPosition="above">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
+
+  <p></p>
+
+  <button mat-button [matMenuTriggerFor]="menuIcon">MenuIcon</button>
+  <mat-menu #menuIcon="matMenu">
+    <button mat-menu-item><mat-icon>home</mat-icon><span>Home</span></button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="menuTriggerIcon">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menuTriggerIcon="matMenu">
+    <button mat-menu-item><mat-icon>home</mat-icon><span>Home</span></button>
+  </mat-menu>
+
+  <!-------------------->
+  <!-- mit Untermenüs -->
+  <!-------------------->
+
+  <button mat-button [matMenuTriggerFor]="languages">languages</button>
+
+  <!--First level Menu-->
+  <mat-menu #languages="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="frontend">frontend</button>
+    <button mat-menu-item [matMenuTriggerFor]="backend">backend</button>
+  </mat-menu>
+
+  <!--Second level sub Menu-->
+  <mat-menu #frontend="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="javascript">Javascript</button>
+    <button mat-menu-item>Typescript</button>
+    <button mat-menu-item>Angular</button>
+  </mat-menu>
+
+  <mat-menu #backend="matMenu">
+    <button mat-menu-item>C#</button>
+    <button mat-menu-item>Java</button>
+  </mat-menu>
+
+  <!--Third level sub Menu-->
+  <mat-menu #javascript="matMenu">
+    <button mat-menu-item>jQuery</button>
+    <button mat-menu-item>Vuejs</button>
+  </mat-menu>
+
+</mat-card>
+
+<mat-card>
+
+  <!-- Menü programmatisch öffnen -->
+  <button (click)="openMatMenuProgrammatically()" mat-button>  Open Menu </button>
+
+  <button mat-icon-button #triggerBtn [matMenuTriggerFor]="normalMenu"> <mat-icon>more_vert</mat-icon> </button>
+  <mat-menu #normalMenu="matMenu">
++  </mat-menu>
+
+</mat-card>
+

@@ -1,0 +1,30 @@
+<mat-card>
+  <mat-icon [matBadge]="badgeCounter" matBadgeSize="small" [matBadgeHidden]="hideMatBadge">
+    notifications
+  </mat-icon>
+  <br/>
+  <button mat-raised-button (click)="incrementCount()">+</button>
+  <button mat-raised-button (click)="decreaseCount()">-</button>
+  <button mat-raised-button (click)="resetCount()">reset</button>
+  <br/>
+  <button mat-raised-button
+    color="primary"
+    matBadge="8"
+    matBadgePosition="before"
+    matBadgeColor="primary"
+    matBadgeDisabled=true
+    disabled>
+    Action
+  </button>
+
+  <button mat-raised-button matTooltip="The Tooltips in Angular">
+    Tooltip
+  </button>
+  <p></p>
+  <button mat-raised-button matTooltip="A tooltip in the simplest form">
+      Tooltip
+  </button>
+  <p></p>
+
+</mat-card>
+

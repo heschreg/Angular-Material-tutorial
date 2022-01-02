@@ -1,0 +1,51 @@
+<button mat-raised-button
+        matTooltip="Multiline Tooltip &#013;&#010; This is second line"
+        matTooltipClass="multiline-tooltip">
+Multiline tooltip
+</button>
+
+<button mat-raised-button [matTooltip]="!isHidden() ? 'Tooltip' : ''">
+Conditional Tooltip
+</button>
+<p></p>
+<div matTooltip="You do not have permission to delete" [matTooltipDisabled]="!isButtonDisabled()">
+  <button mat-raised-button [disabled]="isButtonDisabled()">
+    Delete
+  </button>
+</div>
+<p></p>
+<div matTooltip="You do not have permission to delete" [matTooltipDisabled]="false">
+    <button mat-raised-button [disabled]="true">
+      Delete
+    </button>
+</div>
+
+<h3> MatTooltip -Methoden: #tooltipref, hide(), show() oder toggle() </h3>
+<!--  bei dieser Variante braucht man über @ViewChild nichts zu injecten, d. h. man
+      verwendet die template reference (#tooltipref) in the HTML file itself.
+ -->
+<mat-card>
+  <button mat-raised-button #tooltipref="matTooltip" matTooltip="Triggering by show, hide oder toggle"> Manual Tooltip </button>
+  <button mat-button (click)="tooltipref.show()"> show </button>
+  <button mat-button (click)="tooltipref.hide()"> hide </button>
+  <button mat-button (click)="tooltipref.toggle()"> toggle </button>
+</mat-card>
+
+<!-- @ViewChild('tooltipRef1') manualTooltip1: MatTooltip;
+    showTooltip(){
+      this.manualTooltip1.show();  // Man muss wissen, dasa es für "MatTooltip" die Methoden show(), hide() und toggle() gibt
+    }
+-->
+<mat-card>
+  <button mat-button (click)="showTooltip()">show</button>
+  <button mat-button (click)="hideTooltip()">hide</button>
+  <button mat-button (click)="toggleTooltip()">toggle</button>
+  <button mat-raised-button #tooltipRef1="matTooltip" matTooltip="Nochmal ein Manually triggered tooltip">Manual Tooltip</button>
+</mat-card>
+
+<h3>Tooltop content dynamisch ändern</h3>
+<!-- statt 'matTooltip= " .xxx ..."' sagt man: [matToolTip]="funktion()"     -->
+<button mat-raised-button [matTooltip]="getTooltipContent()"> Manual Tooltip </button>
+<p></p>
+<!-- oder auch: [matToolTip]="funktion()" -->
+<button mat-raised-button [matTooltip]="tooltipContent2"> Manual Tooltip Version 2 </button>

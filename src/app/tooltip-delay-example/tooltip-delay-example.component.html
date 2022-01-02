@@ -1,0 +1,27 @@
+<mat-card>
+
+  <button mat-raised-button matTooltip="A tooltip in the simplest form">Tooltip</button>
+  <p></p>
+
+  <mat-form-field>
+    <input matInput placeholder="Show delay in milliseconds" type="number" [formControl]="showDelay">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Hide delay in milliseconds" type="number" [formControl]="hideDelay">
+  </mat-form-field>
+
+  <button mat-raised-button
+      matTooltip="Info about the action"
+      [matTooltipShowDelay]="showDelay.value"
+      [matTooltipHideDelay]="hideDelay.value"
+    >Tooltip after Delay</button>
+
+    <p></p>
+    <button mat-raised-button
+        matTooltip="Adding a class to the tooltip container"
+        matTooltipClass="custom-tooltip">
+    Custom tooltip
+    </button>
+
+</mat-card>

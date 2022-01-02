@@ -1,0 +1,37 @@
+::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 0.4em 40px !important;}
+::ng-deep .mat-form-field-label-wrapper { top: -1.5em; }
+
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    transform: translateY(-1.1em) scale(.75);
+    width: 133.33333%;
+    padding: 30px;
+}
+
+.mat-row:nth-child(even) {
+  background-color: #D8D8D8;
+}
+
+.mat-row:nth-child(odd) {
+  background-color: #FFFFFF;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.example-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}

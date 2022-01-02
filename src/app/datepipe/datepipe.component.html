@@ -1,0 +1,41 @@
+<!-- Standardmäßig wird jedsmla der selbe Werte für datepipe: ausgegeben (zB.: Jun 15, 2019  = 'MMM d,y')-->
+<p>DateTime as Milliseconds : {{todayNumber}}
+  datepipe:{{todayNumber | date}}</p>
+
+  <p>DateTime as object : {{todayDate}}
+  datepipe:{{todayDate | date}}</p>
+
+  <p>DateTime as string : {{todayString}}
+  datepipe:{{todayString | date}}</p>
+
+  <p>DateTime as iso string : {{todayISOString}}
+  datepipe:{{todayISOString | date}}</p>
+
+  <!-- Jetzt kommmt immer wegen 'short' so etwas raus: 6/15/19, 5:24 PM -->
+  <p>DateTime as Milliseconds : {{todayNumber}}
+    datepipe:{{todayNumber | date : 'short'}}</p>
+
+    <p>DateTime as object : {{todayDate}}
+    datepipe:{{todayDate | date : 'short'}}</p>
+
+    <p>DateTime as string : {{todayString}}
+    datepipe:{{todayString | date : 'short'}}</p>
+
+    <p>DateTime as iso string : {{todayISOString}}
+    datepipe:{{todayISOString | date : 'short'}}</p>
+
+  <!-- Es gibt in Angular 12 vordefinierte Formate, die alle amerikanisch geprägt sind -->
+
+  <!-- Wir wollen eigenes Format  ==> {{ todayDate | customDate (dazu habe ich auch eine eigene Doku erstellt) }}  -->
+  <p>DateTime as Milliseconds : {{todayNumber}}
+    datepipe:{{todayNumber | customDate}}</p>
+
+    <p>DateTime as object : {{todayDate}}
+    datepipe:{{todayDate | customDate}}</p>
+
+    <p>DateTime as string : {{todayString}}
+    datepipe:{{todayString | customDate}}</p>
+
+    <p>DateTime as iso string : {{todayISOString}}
+    datepipe:{{todayISOString | customDate}}</p>
+
